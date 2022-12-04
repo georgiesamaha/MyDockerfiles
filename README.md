@@ -3,22 +3,17 @@ Bioinformatics dockerfiles for:
 * [SomaticStructuralV-nf GPL reporting]()
 * [GermlineStructuralV-nf downstream analysis in RStudio]()
 * [AnnotSV structural variant annotation]() 
-
+ 
 # Build method
 
 **1. Create a new directory for your Dockerfile**
 
 For example:
 ```
-mkdir SVdownstream
+mkdir SVdownstream && cd SVdownstream
 ```
 
 **2. Create a new file in the directory named `Dockerfile`**
-
-For example:
-```
-nano Dockerfile
-```
 
 **3. Choose a base image to start from**
 
@@ -57,6 +52,7 @@ caTools
 
 For example:
 ```
+
 ```
 
 **6. Define any commands or entrypoints to run when the container starts**
