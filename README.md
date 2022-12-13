@@ -50,11 +50,6 @@ caTools
 
 **5. Configure any environment variables or other settings**
 
-For example:
-```
-
-```
-
 **6. Define any commands or entrypoints to run when the container starts**
 
 **8. Build the image**
