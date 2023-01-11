@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 MAINTAINER Georgie Samaha <georgiesamaha@gmail.com>
 LABEL \
-  version="3.2.1" \
+  version="3.1.2" \
   description="AnnotSV with dependencies"
 
 ## Install linux dependencies
@@ -47,6 +47,7 @@ WORKDIR /opt
 RUN git clone --branch v$ANNOTSV_VERSION https://github.com/lgmgeo/AnnotSV.git
 WORKDIR $ANNOTSV_INSTALL_DIR
 RUN make PREFIX=. install
+ENV ANNOTSV=/opt/AnnotSV
 ENV PATH=$PATH:$ANNOTSV_INSTALL_DIR/bin/
 
 ## Tidy up
