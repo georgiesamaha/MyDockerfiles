@@ -29,15 +29,13 @@ RUN wget https://github.com/arq5x/bedtools2/releases/download/v$BEDTOOLS_VERSION
 	ln -s $BEDTOOLS_INSTALL_DIR/bedtools /usr/bin
 
 ## Install bcftools (dependency)
-ENV BEDTOOLS_INSTALL_DIR=/opt/bcftools
-ENV BCFTOOLS_VERSION=1.14
-
+ENV SAMTOOLS_VERSION=1.14
 WORKDIR /opt
-RUN git clone --branch $BCFTOOLS_VERSION --recurse-submodules https://github.com/samtools/htslib.git && \
-	git clone --branch $BCFTOOLS_VERSION https://github.com/samtools/bcftools.git
-WORKDIR $BEDTOOLS_INSTALL_DIR
+RUN git clone --branch $SAMTOOLS_VERSION --recurse-submodules https://github.com/samtools/htslib.git && \
+	git clone --branch $SAMTOOLS_VERSION https://github.com/samtools/bcftools.git
+WORKDIR /opt/bcftools
 RUN make && \
-	ln -s BEDTOOLS_INSTALL_DIR/bcftools /usr/bin
+	ln -s /opt/bcftools/bcftools /usr/bin
 
 ## Install annotSV 
 ENV ANNOTSV_INSTALL_DIR=/opt/AnnotSV
@@ -53,3 +51,4 @@ ENV PATH=$PATH:$ANNOTSV_INSTALL_DIR/bin/
 ## Tidy up
 RUN apt remove -y git wget
 WORKDIR /
+ADD Dockerfile /
