@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 MAINTAINER Georgie Samaha <georgiesamaha@gmail.com>
 LABEL \
-  version="3.1.2" \
+  version="3.2.1" \
   description="AnnotSV with dependencies"
 
 ## Install linux dependencies
