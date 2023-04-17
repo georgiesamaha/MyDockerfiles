@@ -1,6 +1,6 @@
 # MyDockerfiles
  
-# Build method
+## Build method
 
 **1. Create a new directory for your Dockerfile**
 
@@ -15,7 +15,7 @@ mkdir SVdownstream && cd SVdownstream
 touch Dockerfile
 ```
 
-**3. Choose a base image to start from**
+**3. Choose a [base image](https://hub.docker.com/search?q=&type=image&image_filter=official) to start from**
 
 Add this to the first line of the Dockerfile. Some examples:
 ```
@@ -26,7 +26,7 @@ FROM ubuntu:20.04
 
 **4. Add any dependencies that your application needs**
 
-To work out what is needed, look at install scripts or Dockerfile templates provided by the tool's developer. 
+To work out what dependencies are needed, look at install scripts or Dockerfile templates provided by the tool's developer. 
 
 **5. Configure any environment variables or other settings**
 
@@ -47,7 +47,7 @@ sudo docker build -t <name>:<tagVersion> .
 
 For example:
 ```
-sudo singularity pull docker-daemon:svdownstream:1.0
+sudo singularity pull docker-daemon:containername:1.0
 ```
 
 **10. Upload to DockerHub**
@@ -59,3 +59,40 @@ From the command line:
 docker tag <local-image>:<tagVersion> <repo-name>:<tag-name>
 docker push <new-repo>:<tag-name>
 ```
+
+## Cheatsheet 
+
+Build a docker image from a dockerfile:
+```
+docker build -t imagename:version . (or /path/to/dockerfile)
+```
+
+Run a docker container from an image:
+```
+docker run imagename
+```
+
+List all running docker containers:
+```
+docker ps
+```
+
+List all docker images:
+```
+docker images
+```
+
+Remove a docker image:
+```
+docker rmi imagename (or ID)
+```
+
+Clear docker cache. This command will remove all stopped containers, dangling images, unused networks, and build cache. Additionally, it will remove all volumes not used by at least one container. Note that this will permanently delete these items, so make sure you want to do this before running the command.
+```
+docker system prune -a --volumes
+```
+
+## Some resources
+
+* [Official Docker Registry](https://hub.docker.com/search?q=&type=image&image_filter=official)
+* [Docker best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)

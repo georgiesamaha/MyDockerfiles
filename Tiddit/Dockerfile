@@ -17,8 +17,8 @@ RUN apt-get update && \
         python3 \
         python3-pip
 
-# Install numpy
-RUN pip3 install numpy cython
+# Install python dependencies
+RUN pip3 install numpy cython joblib
 
 # Clone and install TIDDIT
 WORKDIR /usr/local
@@ -42,6 +42,3 @@ RUN git clone https://github.com/lh3/bwa.git && \
 
 # Set the working directory to /data
 WORKDIR /data
-
-# Set the entrypoint to tiddit
-ENTRYPOINT ["tiddit"]
